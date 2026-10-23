@@ -1,0 +1,13 @@
+FAROL — APK PARA APRESENTAÇÃO
+
+1. Copie Farol-Prototipo.apk para seu celular Android (8.0 ou mais novo).
+2. Abra o arquivo no app Arquivos/Downloads.
+3. Permita a instalação por essa fonte se o Android solicitar.
+4. Instale e abra o app Farol.
+
+Funciona offline. Não exige login ou Expo Go.
+
+Roteiro: Início > buscar destino > comparar rotas > Guardião > SOS > relato > Alertas/Mapa.
+Para repetir: Perfil > Reiniciar apresentação.
+
+Dados, localização, riscos e trajetos são fictícios. SOS e Guardião são simulações; não enviam mensagens nem acionam serviços de emergência.

@@ -1,0 +1,3 @@
+Chromium Android emulation: scroll scenes 0-3; choices, Guardian pause/replay, reports, demo, reduced motion, responsiveness, APK
+WebKit iPhone emulation: scroll scenes 0-3; choices, Guardian pause/replay, reports, demo, reduced motion
+Offline: landing, demo and APK after first visit
