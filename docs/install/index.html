@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102747">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Farol">
+  <meta name="description" content="Instale o protótipo Farol no Android ou iPhone. O ícone abre diretamente o aplicativo web, com mapa, rotas e Guardião simulados.">
+  <title>Instalar Farol · Android e iPhone</title>
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="manifest" href="../manifest.webmanifest?v=5">
+  <link rel="stylesheet" href="../install-page.css">
+  <script src="../pwa.js?v=5" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Farol, voltar à apresentação"><img src="../assets/logo.svg" alt="" width="35" height="40"><span>FAROL</span></a>
+    <a class="back" href="../">Voltar à apresentação <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="conteudo">
+    <div class="layout">
+      <section class="intro" aria-labelledby="page-title">
+        <span class="eyebrow"><i></i> UM APP WEB PARA LEVAR COM VOCÊ</span>
+        <h1 id="page-title">O Farol, agora <em>na sua tela inicial.</em></h1>
+        <p class="lead">Instale o protótipo no Android ou iPhone. Ao tocar no ícone, você entra direto no aplicativo, com mapa, rotas, alertas e Guardião de demonstração.</p>
+        <div class="actions">
+          <button class="install-button" type="button" data-install-now>Instalar Farol <span aria-hidden="true">↗</span></button>
+          <a class="try-link" href="../app/">Abrir protótipo no navegador <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="install-status" id="install-status" role="status" tabindex="-1" aria-live="polite">No Android, o botão pode abrir a instalação. No iPhone, siga o passo a passo abaixo no Safari.</p>
+        <div class="trust-line"><span>✓ Sem loja de aplicativos</span><span>✓ Sem cadastro</span><span>✓ Funciona offline após a primeira visita</span></div>
+      </section>
+      <div class="preview" aria-hidden="true"><div class="preview-glow"></div><div class="phone"><div class="notch"></div><img src="../assets/tela-inicio.png" alt="" width="824" height="1700"></div><div class="preview-note"><span class="preview-icon">✓</span><span>Instalado, o ícone abre<br><strong>o protótipo Farol.</strong></span></div></div>
+    </div>
+    <section class="instructions" aria-labelledby="steps-title">
+      <div class="section-head"><span class="eyebrow">COMO ADICIONAR</span><h2 id="steps-title">Escolha seu celular.</h2><p>As etapas mudam conforme o navegador. Se estiver no WhatsApp ou Instagram, abra esta página no navegador do aparelho.</p></div>
+      <div class="platform-switch" role="group" aria-label="Sistema do celular"><button type="button" data-platform="android" aria-pressed="true">Android</button><button type="button" data-platform="ios" aria-pressed="false">iPhone / iOS</button></div>
+      <div class="step-panel" data-platform-panel="android">
+        <ol><li><span>01</span><div><strong>Abra no Chrome</strong><p>Use esta mesma página no Chrome do seu Android.</p></div></li><li><span>02</span><div><strong>Toque em “Instalar Farol”</strong><p>Quando a janela de instalação aparecer, confirme. Se ela não aparecer, abra o menu ⋮ do Chrome e escolha “Instalar app” ou “Adicionar à tela inicial”.</p></div></li><li><span>03</span><div><strong>Abra pelo ícone</strong><p>O ícone Farol abre o protótipo diretamente, sem passar pela landing.</p></div></li></ol>
+      </div>
+      <div class="step-panel" data-platform-panel="ios" hidden>
+        <ol><li><span>01</span><div><strong>Abra no Safari</strong><p>Abra esta página no Safari do iPhone. Outros navegadores ou o navegador dentro de outro aplicativo podem não mostrar a opção necessária.</p></div></li><li><span>02</span><div><strong>Toque em Compartilhar</strong><p>No menu de compartilhamento do Safari, escolha “Adicionar à Tela de Início”.</p></div></li><li><span>03</span><div><strong>Confirme a adição</strong><p>Se a opção aparecer, ative “Abrir como App” e toque em “Adicionar”. O novo ícone abre o protótipo Farol.</p></div></li></ol>
+        <p class="ios-note">O iPhone exige essa confirmação pelo Safari; o botão azul não pode instalar o app automaticamente.</p>
+      </div>
+    </section>
+    <section class="demo-note"><div><span class="eyebrow">UMA DEMONSTRAÇÃO</span><h2>Explore à vontade.</h2><p>Mapa, localização, scores, rotas, Guardião, SOS e relatos usam dados fictícios. Nenhuma mensagem ou alerta real é enviado.</p></div><a href="../app/">Testar o protótipo <span aria-hidden="true">→</span></a></section>
+  </main>
+  <footer><a href="../">FAROL</a><span>Seu caminho, mais tranquilo.</span></footer>
+</body>
+</html>

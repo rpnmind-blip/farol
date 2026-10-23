@@ -1,3 +1,3 @@
-Chromium Android emulation: prototype root, Project tab, installation, routes, Guardian, keyboard, reduced motion, SOS, reports, reset, responsiveness
-WebKit iPhone emulation: prototype root, Project tab, installation, routes, Guardian, keyboard, reduced motion
-Offline: prototype, presentation and map after first visit
+Chromium Android emulation: landing, install, manifest, app, routes, Guardian, redirects, responsive and reduced motion
+WebKit iPhone emulation: landing, install, manifest, app, routes, Guardian, redirects, responsive and reduced motion
+Offline: landing, installation and prototype after first visit
