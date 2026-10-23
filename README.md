@@ -6,8 +6,8 @@ Landing interativa e aplicativo web instalável (PWA) do Farol. A leitura muda u
 
 ## Testar no celular
 
-- **Android:** abra o link no Chrome e toque em “Instalar como app”. Se o navegador não oferecer uma janela de instalação, use “Instalar app” ou “Adicionar à tela inicial” no menu ⋮.
-- **iPhone:** abra o link no Safari, toque em “Abrir app web” e, na demonstração, toque em “Instalar app”. No Safari, use Compartilhar → “Adicionar à Tela de Início” e, se aparecer, ative “Abrir como App”.
+- **Android:** abra a landing no Chrome e toque em “Instalar o Farol”. Se o navegador não oferecer uma janela de instalação, siga as instruções exibidas e use “Instalar app” ou “Adicionar à tela inicial” no menu ⋮.
+- **iPhone:** abra a landing no Safari e toque em “Instalar o Farol” para ver o passo a passo. No Safari, use Compartilhar → “Adicionar à Tela de Início” e, se aparecer, ative “Abrir como App”.
 - O mesmo endereço funciona nos dois sistemas, sem baixar APK ou IPA. Após a primeira visita online, o service worker guarda a landing e a demonstração para acesso offline. Dados da demonstração ficam somente no armazenamento local do navegador e podem ser apagados em Perfil → Reiniciar apresentação.
 
 O mapa, scores, rotas, horários, localização, ocorrências, Guardião e SOS são simulados. Nenhuma mensagem é enviada e nenhum serviço de emergência é acionado. Não há GPS, backend ou alertas reais nesta versão.

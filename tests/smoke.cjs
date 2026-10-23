@@ -21,6 +21,7 @@ async function browserCheck(engine,name,full){
  assert(await page.locator('.experience-stage').count()===1,`${name}: repeated mobile maps`);
  assert(await page.locator('img').evaluateAll(list=>list.every(img=>img.complete&&img.naturalWidth)),`${name}: broken image`);
  assert((await page.locator('.hero-actions a[href="demo/"]').count())===1,`${name}: demo shortcut missing`);
+ assert((await page.locator('.hero-actions a[href="#jornada"]').count())===1,`${name}: landing journey action missing`);
  assert(await page.locator('a[href$=".apk"]').count()===0,`${name}: APK download still promoted`);
  assert(await page.locator('button[data-install-app]').count()===1,`${name}: install action missing`);
  const manifest=await page.evaluate(async()=>await(await fetch(document.querySelector('link[rel="manifest"]').href)).json());
@@ -91,19 +92,20 @@ async function browserCheck(engine,name,full){
   assert(await page.locator('main[data-screen="home"]').count()===1,'Demo reset failed');
  }
  await page.locator('.demo-return a').tap();await page.waitForURL(url=>!url.pathname.includes('/demo/'));assert(!page.url().includes('/demo/'),`${name}: return from demo failed`);
- if(!full){
-  await page.locator('button[data-install-app]').tap();await page.waitForURL(url=>url.pathname.endsWith('/demo/'));
-  assert(await page.locator('#install-dialog').isVisible(),`${name}: install action did not open guidance`);
- }
- await page.goto(new URL('demo/?instalar=1',base).href,{waitUntil:'networkidle'});
+ const landingUrl=page.url();
+ await page.locator('button[data-install-app]').tap();
  assert(await page.locator('#install-dialog').isVisible(),`${name}: install guidance missing`);
  assert((await page.locator('#install-title').textContent()).includes(full?'Android':'iPhone'),`${name}: wrong install instructions`);
- assert(!page.url().includes('instalar='),`${name}: installation link did not clean URL`);
+ assert(page.url()===landingUrl,`${name}: install button left the landing`);
  if(full)await page.screenshot({path:shot('11-install-android.png')});else await page.screenshot({path:shot('12-install-iphone.png')});
  await page.locator('.install-dialog-close').tap();
+ await page.locator('button[data-install-app]').tap();
+ assert(await page.locator('#install-dialog').isVisible(),`${name}: install button did not reopen guidance`);
+ await page.keyboard.press('Escape');assert(!await page.locator('#install-dialog').isVisible(),`${name}: install dialog Escape failed`);
+ await page.goto(new URL('demo/',base).href,{waitUntil:'networkidle'});
  await page.locator('.demo-return [data-install-app]').tap();
  assert(await page.locator('#install-dialog').isVisible(),`${name}: demo install button failed`);
- await page.keyboard.press('Escape');assert(!await page.locator('#install-dialog').isVisible(),`${name}: install dialog Escape failed`);
+ await page.locator('.install-dialog-close').tap();
  await page.locator('.demo-return a').tap();await page.waitForURL(url=>!url.pathname.includes('/demo/'));
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload({waitUntil:'networkidle'});
  assert(await page.locator('html').evaluate(el=>el.classList.contains('motion-reduced')),`${name}: reduced motion ignored`);

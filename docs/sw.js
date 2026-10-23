@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='farol-web-v2';
+const CACHE='farol-web-v3';
 const FILES=[
   './','index.html','style.css','journey.css','mobile.css','install.css','site.js','pwa.js','manifest.webmanifest',
   'assets/logo.svg','assets/icon-192.png','assets/icon-512.png','assets/apple-touch-icon.png',

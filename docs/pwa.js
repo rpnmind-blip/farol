@@ -6,7 +6,6 @@ if('serviceWorker' in navigator && (location.protocol==='https:' || /^(localhost
 
 let installPrompt=null;
 const installButtons=Array.from(document.querySelectorAll('[data-install-app]'));
-const isDemo=location.pathname.replace(/\/$/,'').endsWith('/demo');
 const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const isAndroid=/Android/.test(navigator.userAgent);
 const installed=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
@@ -26,11 +25,11 @@ function showGuide(){
   const title=guide.querySelector('#install-title'),description=guide.querySelector('#install-description'),steps=guide.querySelector('#install-steps');
   if(isIOS){
     title.textContent='Adicione o Farol no iPhone';
-    description.textContent='No Safari, esta página vira um ícone que abre a demonstração como aplicativo web.';
+    description.textContent='No Safari, você pode adicionar o Farol à Tela de Início sem sair desta página.';
     steps.replaceChildren(...['Abra esta página no Safari. Se estiver em outro aplicativo, use a opção para abrir no navegador.','Toque em Compartilhar e escolha “Adicionar à Tela de Início”.','Se aparecer, ative “Abrir como App” e toque em Adicionar.'].map(step=>{const li=document.createElement('li');li.textContent=step;return li;}));
   }else if(isAndroid){
     title.textContent='Instale o Farol no Android';
-    description.textContent='O Chrome pode adicionar esta demonstração à sua tela inicial.';
+    description.textContent='O Chrome pode adicionar o Farol à sua tela inicial.';
     steps.replaceChildren(...['Abra esta página no Chrome.','Toque no menu ⋮ e escolha “Instalar app” ou “Adicionar à tela inicial”.','Confirme para abrir o Farol pelo novo ícone.'].map(step=>{const li=document.createElement('li');li.textContent=step;return li;}));
   }else{
     title.textContent='Use o Farol como app web';
@@ -55,11 +54,6 @@ installButtons.forEach(button=>button.addEventListener('click',async()=>{
     updateInstalled();
     return;
   }
-  if(!isDemo){location.href=new URL('demo/?instalar=1',siteRoot).href;return;}
   showGuide();
 }));
-if(isDemo&&new URLSearchParams(location.search).has('instalar')){
-  window.history.replaceState(null,'',location.pathname);
-  showGuide();
-}
 updateInstalled();
