@@ -10,22 +10,24 @@
   <title>Teste o Farol · Demonstração</title>
   <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="manifest" href="../manifest.webmanifest?v=2">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../install.css">
   <style>
     .demo-return{position:sticky;top:0;z-index:15;min-height:48px;padding:6px max(14px,env(safe-area-inset-left)) 6px max(14px,env(safe-area-inset-right));padding-top:calc(6px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-bottom:1px solid #dce5ef;box-shadow:0 3px 10px #1027470a}
     .demo-return a{color:#102747;font-size:12px;font-weight:700;text-decoration:none;min-height:40px;display:inline-flex;align-items:center;gap:8px}
     .demo-return a:focus-visible{outline:3px solid #2864e8;outline-offset:2px;border-radius:5px}
     .demo-return img{width:20px;height:23px}
-    .demo-return span{font-size:10px;color:#70849a;text-align:right}
+    .demo-return .install-shortcut{background:#eaf2ff;border:1px solid #cfe0ff;border-radius:9px;color:#1254d0;padding:9px 11px;font-size:11px;font-weight:700;white-space:nowrap;min-height:38px}
+    .demo-return .install-shortcut:focus-visible{outline:3px solid #2864e8;outline-offset:2px}
     @media(min-width:650px){.demo-return{max-width:640px;margin-inline:auto;border-inline:1px solid #dce5ef}.screen{min-height:calc(100vh - 48px)}}
-    @media(max-width:350px){.demo-return span{font-size:9px}}
+    @media(max-width:350px){.demo-return a{font-size:10px}.demo-return .install-shortcut{font-size:10px;padding:8px}}
   </style>
   <script src="app.js" defer></script>
-  <script src="../pwa.js" defer></script>
+  <script src="../pwa.js?v=2" defer></script>
 </head>
 <body>
-  <header class="demo-return"><a href="../"><img src="../assets/logo.svg" alt="">← Voltar para a apresentação</a><span>Protótipo · dados simulados</span></header>
+  <header class="demo-return"><a href="../"><img src="../assets/logo.svg" alt="">← Voltar para a apresentação</a><button type="button" class="install-shortcut" data-install-app>Instalar app</button></header>
   <div id="app"></div>
   <div id="modal-root"></div>
   <div id="toast" role="status" aria-live="polite"></div>

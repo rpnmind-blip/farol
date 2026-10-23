@@ -1,9 +1,8 @@
 'use strict';
-const {chromium,webkit}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {chromium,webkit,devices}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const base=process.env.BASE_URL||'http://127.0.0.1:8787/';
-const expectedApk='1464b65f0a6c026e1cf4e9356609a5239d8af56e902fbabd3d7f04f0d35ab6fb';
 const shot=name=>path.join(root,'screenshots',name);
 const assert=(value,message)=>{if(!value)throw Error(message)};
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -12,7 +11,7 @@ const stage=page=>page.locator('.desktop-scene .experience-stage');
 async function browserCheck(engine,name,full){
  const browser=await engine.launch(full?{executablePath:process.env.CHROME_EXECUTABLE||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});
  const errors=[];
- const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,acceptDownloads:true});
+ const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,acceptDownloads:true,userAgent:devices[full?'Pixel 5':'iPhone 13'].userAgent});
  const page=await context.newPage();
  page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`)});
@@ -22,6 +21,10 @@ async function browserCheck(engine,name,full){
  assert(await page.locator('.experience-stage').count()===1,`${name}: repeated mobile maps`);
  assert(await page.locator('img').evaluateAll(list=>list.every(img=>img.complete&&img.naturalWidth)),`${name}: broken image`);
  assert((await page.locator('.hero-actions a[href="demo/"]').count())===1,`${name}: demo shortcut missing`);
+ assert(await page.locator('a[href$=".apk"]').count()===0,`${name}: APK download still promoted`);
+ assert(await page.locator('button[data-install-app]').count()===1,`${name}: install action missing`);
+ const manifest=await page.evaluate(async()=>await(await fetch(document.querySelector('link[rel="manifest"]').href)).json());
+ assert(manifest.start_url==='./demo/'&&manifest.display==='standalone',`${name}: installed app does not open demo`);
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${name}: horizontal overflow`);
  if(full)await page.screenshot({path:shot('02-mobile-hero.png')});
  const scenes=new Set();
@@ -88,16 +91,26 @@ async function browserCheck(engine,name,full){
   assert(await page.locator('main[data-screen="home"]').count()===1,'Demo reset failed');
  }
  await page.locator('.demo-return a').tap();await page.waitForURL(url=>!url.pathname.includes('/demo/'));assert(!page.url().includes('/demo/'),`${name}: return from demo failed`);
+ if(!full){
+  await page.locator('button[data-install-app]').tap();await page.waitForURL(url=>url.pathname.endsWith('/demo/'));
+  assert(await page.locator('#install-dialog').isVisible(),`${name}: install action did not open guidance`);
+ }
+ await page.goto(new URL('demo/?instalar=1',base).href,{waitUntil:'networkidle'});
+ assert(await page.locator('#install-dialog').isVisible(),`${name}: install guidance missing`);
+ assert((await page.locator('#install-title').textContent()).includes(full?'Android':'iPhone'),`${name}: wrong install instructions`);
+ assert(!page.url().includes('instalar='),`${name}: installation link did not clean URL`);
+ if(full)await page.screenshot({path:shot('11-install-android.png')});else await page.screenshot({path:shot('12-install-iphone.png')});
+ await page.locator('.install-dialog-close').tap();
+ await page.locator('.demo-return [data-install-app]').tap();
+ assert(await page.locator('#install-dialog').isVisible(),`${name}: demo install button failed`);
+ await page.keyboard.press('Escape');assert(!await page.locator('#install-dialog').isVisible(),`${name}: install dialog Escape failed`);
+ await page.locator('.demo-return a').tap();await page.waitForURL(url=>!url.pathname.includes('/demo/'));
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload({waitUntil:'networkidle'});
  assert(await page.locator('html').evaluate(el=>el.classList.contains('motion-reduced')),`${name}: reduced motion ignored`);
  await jump(page,'#rotas');await page.locator('button[data-route="fast"]').tap();await page.waitForTimeout(80);
  assert((await stage(page).locator('.scene-time-value').textContent())==='18 min',`${name}: reduced motion controls failed`);
  assert(await page.locator('#rotas .chapter-content').evaluate(el=>getComputedStyle(el).opacity)==='1',`${name}: reduced motion hid text`);
  if(full){
-  const download=page.waitForEvent('download');await page.locator('a[download="Farol-Prototipo.apk"]').tap();const file=await download;
-  assert(file.suggestedFilename()==='Farol-Prototipo.apk','APK name wrong');
-  const digest=crypto.createHash('sha256').update(fs.readFileSync(await file.path())).digest('hex');
-  assert(digest===expectedApk,'APK hash changed');
   for(const [width,height] of [[320,568],[390,844],[768,900],[900,900],[1024,900],[1440,900]]){
    await page.setViewportSize({width,height});await page.goto(base,{waitUntil:'networkidle'});
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Overflow at ${width}`);
@@ -108,7 +121,7 @@ async function browserCheck(engine,name,full){
   assert(await staticPage.locator('#proposta h2').isVisible(),'No-JS content hidden');await nojs.close();
  }
  assert(!errors.length,`${name} browser errors: ${errors.join(' | ')}`);
- await context.close();await browser.close();return `${name}: scroll scenes 0-3; choices, Guardian pause/replay, reports, demo, reduced motion${full?', responsiveness, APK':''}`;
+ await context.close();await browser.close();return `${name}: scroll scenes 0-3; choices, Guardian pause/replay, reports, web install, reduced motion${full?', responsiveness':''}`;
 }
 async function offlineCheck(){
  const browser=await chromium.launch({executablePath:process.env.CHROME_EXECUTABLE||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
@@ -123,9 +136,8 @@ async function offlineCheck(){
  await page.goto(new URL('demo/',base).href,{waitUntil:'domcontentloaded'});
  assert(await page.locator('main[data-screen="home"]').count()===1,'Offline demo failed');
  await page.goto(base,{waitUntil:'domcontentloaded'});
- const bytes=await page.evaluate(async()=>{const response=await fetch('downloads/Farol-Prototipo.apk');return (await response.arrayBuffer()).byteLength});
- assert(bytes===916525,'Offline APK cache incomplete');
- await browser.close();return 'Offline: landing, demo and APK after first visit';
+ assert(await page.locator('button[data-install-app]').count()===1,'Offline install instructions missing');
+ await browser.close();return 'Offline: landing and demo after first visit';
 }
 (async()=>{
  const results=[];results.push(await browserCheck(chromium,'Chromium Android emulation',true));

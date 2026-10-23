@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#102747">
   <title>FAROL — Seu caminho, mais tranquilo.</title>
-  <meta name="description" content="Conheça o Farol: uma proposta para transformar informações sobre o entorno em deslocamentos mais seguros. Explore o protótipo e baixe a demonstração Android.">
+  <meta name="description" content="Conheça o Farol: uma experiência web para Android e iPhone. Explore o protótipo no navegador ou adicione-o à tela inicial.">
   <meta property="og:title" content="FAROL — Seu caminho, mais tranquilo.">
   <meta property="og:description" content="Informação para escolher melhor. Companhia para seguir mais tranquilo. Conheça o protótipo do Farol.">
   <meta property="og:type" content="website">
@@ -17,12 +17,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="manifest" href="manifest.webmanifest?v=2">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="journey.css">
   <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="install.css">
   <script src="site.js" defer></script>
-  <script src="pwa.js" defer></script>
+  <script src="pwa.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -33,7 +34,6 @@
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
     <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 5h10a4 4 0 0 1 0 8H7a3 3 0 0 0 0 6h10"/></symbol>
     <symbol id="i-community" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M19 21v-3a5 5 0 0 0-3-4"/></symbol>
-    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
@@ -57,7 +57,7 @@
           <span class="eyebrow"><i></i> UM NOVO OLHAR PARA O SEU TRAJETO</span>
           <h1 id="hero-title">Seu caminho,<br><span>mais tranquilo.</span></h1>
           <p class="hero-description">Escolha seu caminho. Veja o entorno mudar. Sinta como seria ter companhia até chegar. A sua jornada com o Farol começa aqui.</p>
-          <div class="hero-actions"><a class="button" href="#jornada">Começar meu trajeto <svg class="icon"><use href="#i-arrow"/></svg></a><a class="quiet-link" href="demo/">Testar o app <span>→</span></a></div>
+          <div class="hero-actions"><a class="button" href="demo/">Abrir app web <svg class="icon"><use href="#i-arrow"/></svg></a><a class="quiet-link" href="#jornada">Conhecer a jornada <span>→</span></a></div>
           <p class="demo-note"><span></span> Protótipo disponível para explorar. Dados e funções simulados.</p>
           <div class="hero-benefits"><span><svg class="icon"><use href="#i-shield"/></svg>Escolhas mais informadas</span><span><svg class="icon"><use href="#i-pin"/></svg>Mais tranquilidade no trajeto</span></div>
         </div>
@@ -109,12 +109,12 @@
     </template>
     <section class="section faq-section" aria-labelledby="faq-title"><div class="container faq-grid"><div class="reveal"><span class="eyebrow">ANTES DE EXPERIMENTAR</span><h2 id="faq-title">O Farol,<br><em>com clareza.</em></h2><p>Uma ideia em desenvolvimento.<br>Uma experiência que você já pode conhecer.</p></div><div class="faq-list reveal">
       <details><summary>O Farol já é um aplicativo em operação?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Esta versão é um protótipo visual e navegável para apresentar a proposta. Rotas, scores, alertas e localização são simulados. Ela não informa o risco real de uma região.</p></details>
-      <details><summary>Posso testar no Android e no iPhone?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Sim. Esta versão web abre no Android e no iPhone e pode ser adicionada à tela inicial. O APK separado instala apenas no Android 8.0 ou superior. Ainda não há aplicativo iOS nativo.</p></details>
+      <details><summary>Posso testar no Android e no iPhone?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Sim. Abra o aplicativo web no navegador dos dois sistemas. Para ter um ícone na tela inicial, use “Instalar como app” e siga as instruções do seu celular. Não é necessário baixar um arquivo.</p></details>
       <details><summary>O SOS envia mensagens ou chama uma emergência?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Na demonstração, não. O botão mostra o fluxo visual após ser pressionado por três segundos. Nenhuma mensagem é enviada e nenhum serviço de emergência é acionado. O Guardião também não acompanha sua localização real.</p></details>
       <details><summary>Há integração com câmeras e sensores?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Câmeras, sensores urbanos e alertas em tempo real fazem parte da evolução prevista. Eles não estão conectados à versão demonstrativa disponível nesta página.</p></details>
       <details><summary>Preciso criar uma conta para explorar?<svg class="icon"><use href="#i-plus"/></svg></summary><p>O protótipo não exige cadastro e não pede acesso ao GPS ou aos contatos. Relatos e preferências da demonstração ficam apenas no navegador ou no aparelho, e podem ser apagados em Perfil → Reiniciar apresentação.</p></details>
     </div></div></section>
-    <section class="download-section" id="experimentar" aria-labelledby="download-title"><div class="container download-inner reveal"><span class="eyebrow">SEU PRÓXIMO PASSO</span><h2 id="download-title">Conheça um jeito<br><span>mais tranquilo de ir.</span></h2><p>Agora que você conhece o caminho, explore o protótipo completo.</p><div class="download-actions"><a href="demo/" class="button">Abrir demonstração <svg class="icon"><use href="#i-arrow"/></svg></a><a href="downloads/Farol-Prototipo.apk" download="Farol-Prototipo.apk" class="button secondary">Baixar APK Android <svg class="icon"><use href="#i-download"/></svg></a></div><p class="download-info">Versão web para Android e iPhone · APK apenas para Android · dados fictícios</p><div class="install-help"><strong>Use como aplicativo no celular</strong><p>No iPhone, abra este link no Safari, toque em Compartilhar e depois em “Adicionar à Tela de Início”. No Android, use “Instalar app” ou “Adicionar à tela inicial” no menu do navegador. Após a primeira visita online, a demonstração também abre offline.</p></div><a class="installation-link" href="downloads/INSTALAR.txt" download>Como instalar o APK</a></div></section>
+    <section class="download-section" id="experimentar" aria-labelledby="download-title"><div class="container download-inner reveal"><span class="eyebrow">SEU PRÓXIMO PASSO</span><h2 id="download-title">O Farol no seu celular,<br><span>sem baixar arquivos.</span></h2><p>Abra agora no navegador ou adicione o app web à tela inicial do Android e do iPhone.</p><div class="download-actions"><a href="demo/" class="button">Abrir aplicativo web <svg class="icon"><use href="#i-arrow"/></svg></a><button type="button" data-install-app class="button secondary">Instalar como app <svg class="icon"><use href="#i-plus"/></svg></button></div><p class="download-info">Mesmo link nos dois sistemas · protótipo com dados simulados</p><div class="install-help"><strong>Como funciona?</strong><p>No Android, o Chrome oferece a instalação pelo menu. No iPhone, abra o aplicativo no Safari e use Compartilhar → Adicionar à Tela de Início. Depois da primeira visita online, ele também pode abrir offline.</p></div></div></section>
   </main>
   <footer class="footer"><div class="container footer-inner"><a href="#topo" class="brand"><img src="assets/logo.svg" width="29" height="32" alt=""><span>FAROL</span></a><p>Informação que orienta. Tranquilidade que acompanha.</p><a href="#experimentar">Conheça o protótipo <span>↑</span></a></div><div class="container footer-bottom"><span>Projeto Farol · 2026</span><span>Deslocamentos mais seguros começam com informação.</span></div></footer>
 </body>

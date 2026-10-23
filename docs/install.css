@@ -1,0 +1,15 @@
+.download-actions button.button{appearance:none;font-family:inherit}
+.install-dialog-badge{display:inline-block;color:#17805b;font-size:11px;font-weight:800;letter-spacing:1.3px}
+#install-dialog{width:min(440px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #d9e4f0;border-radius:22px;padding:0;background:#fff;color:#102747;box-shadow:0 24px 70px #10274735}
+#install-dialog::backdrop{background:#10274791;backdrop-filter:blur(5px)}
+.install-dialog-content{padding:29px;text-align:left}
+.install-dialog-content h2{margin:13px 0 10px;font-size:27px;line-height:1.15;letter-spacing:-.8px}
+.install-dialog-content p{font-size:14px;line-height:1.55;color:#586d86}
+.install-dialog-content ol{display:grid;gap:12px;margin:19px 0;padding-left:25px;font-size:14px;line-height:1.45}
+.install-dialog-content li{padding-left:4px}
+.install-dialog-content li::marker{color:#1b62ed;font-weight:800}
+.install-dialog-content .install-dialog-note{padding:13px 15px;background:#edf7f2;border-radius:12px;color:#276b55;font-size:12px}
+.install-dialog-content form{margin-top:21px}
+.install-dialog-close{width:100%;min-height:47px;padding:11px 18px;border:0;border-radius:11px;background:#1b62ed;color:#fff;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
+.install-dialog-close:focus-visible{outline:3px solid #6f9efa;outline-offset:3px}
+@media(max-width:650px){.download-actions button.button{width:100%;max-width:330px;min-height:48px;justify-content:space-between}.install-dialog-content{padding:23px}.install-dialog-content h2{font-size:24px}}
