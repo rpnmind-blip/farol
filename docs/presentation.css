@@ -1,0 +1,42 @@
+.nav{grid-template-columns:repeat(5,minmax(0,1fr));padding-bottom:max(13px,env(safe-area-inset-bottom))}
+.nav button{min-width:0}
+.home-head-actions{display:flex;align-items:center;gap:7px}
+.home-install{border:1px solid #cbdcf7;border-radius:9px;background:#eef4ff;color:#1859d1;font-size:10px;font-weight:800;padding:8px 9px;white-space:nowrap}
+.home-install:focus-visible{outline:3px solid #739ef6;outline-offset:2px}
+.screen[data-screen=presentation]{padding-top:18px}
+.screen[data-screen=presentation] .page-header{margin-bottom:17px}
+.project-lead{position:relative;overflow:hidden;padding:24px 22px 27px;border-radius:25px;background:radial-gradient(circle at 100% 0,#3168ab 0,transparent 55%),linear-gradient(145deg,#102747,#12365f);color:white}
+.project-lead:after{content:"";position:absolute;right:-30px;bottom:-67px;width:210px;height:190px;border:1px dashed #9cc8ea80;border-radius:50%;transform:rotate(-30deg)}
+.project-emblem{display:grid;place-items:center;width:52px;height:52px;margin-bottom:18px;border-radius:16px;background:#ffffff14;color:#d5f78a}
+.project-emblem .brand-logo{width:30px;height:34px;color:#d5f78a}
+.project-lead .eyebrow{color:#abd9cb}
+.project-lead h2{font-size:31px;letter-spacing:-1.2px;line-height:1.08;margin:10px 0 13px}
+.project-lead h2 span{color:#b9f281}
+.project-lead p{max-width:330px;font-size:13px;line-height:1.58;color:#d3e1f0}
+.project-ribbon{display:flex;justify-content:space-between;gap:8px;padding:14px 4px;color:#4d647c;font-size:10px;font-weight:700}
+.project-ribbon span{display:flex;align-items:center;gap:5px}
+.project-ribbon .icon{width:15px;height:15px;color:#158d72}
+.project-section{margin-top:17px}
+.project-section h2,.project-next h2,.project-install h2{font-size:22px;letter-spacing:-.5px;line-height:1.18}
+.project-section h2{margin:8px 0 7px}
+.project-section>p,.project-next p,.project-install p{font-size:12px;line-height:1.6;color:#66788f}
+.project-links{display:grid;gap:9px;margin-top:17px}
+.project-links button{display:flex;align-items:center;gap:13px;width:100%;padding:15px;border:1px solid #dce5ee;border-radius:15px;background:#fff;text-align:left;box-shadow:0 3px 14px #10274708}
+.project-links button>.icon:first-child{width:24px;height:24px;color:#1b62ed}
+.project-links button>.icon:last-child{width:16px;height:16px;margin-left:auto;color:#8aa1b8}
+.project-links button span{flex:1}
+.project-links strong{display:block;font-size:13px}
+.project-links small{display:block;margin-top:4px;color:#73869b;font-size:10px;line-height:1.35}
+.project-next{margin-top:23px;padding:21px;border:1px solid #d7e9df;border-radius:18px;background:#edf7f1}
+.project-next .eyebrow{color:#128063}
+.project-next h2{margin:9px 0 9px}
+.project-next p{color:#45675a}
+.project-install{margin-top:18px;padding:22px;border-radius:19px;background:#102747;color:#fff}
+.project-install>div>.icon{width:26px;height:26px;color:#d5f78a;margin-bottom:12px}
+.project-install h2{margin-bottom:9px}
+.project-install p{color:#c9d9e9}
+.project-install button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;margin-top:17px;padding:13px 16px;border-radius:11px;background:#2864e8;color:#fff;font-size:13px;font-weight:700}
+.project-install button .icon{width:17px;height:17px}
+.project-disclaimer{margin:19px 2px 0;font-size:10px;line-height:1.55;color:#74869a}
+.pwa-installed [data-install-app]{display:none!important}
+@media(max-width:350px){.nav{padding-inline:5px}.nav button{font-size:8px;padding:5px 1px}.nav .icon{width:19px;height:19px}.home-head-actions{gap:4px}.home-install{font-size:9px;padding:6px}.screen[data-screen=home] .demo{font-size:7px;padding:6px}.project-lead h2{font-size:28px}}

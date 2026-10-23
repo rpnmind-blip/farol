@@ -3,119 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102747">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Farol">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#102747">
-  <title>FAROL — Seu caminho, mais tranquilo.</title>
-  <meta name="description" content="Conheça o Farol: uma experiência web para Android e iPhone. Explore o protótipo no navegador ou adicione-o à tela inicial.">
-  <meta property="og:title" content="FAROL — Seu caminho, mais tranquilo.">
-  <meta property="og:description" content="Informação para escolher melhor. Companhia para seguir mais tranquilo. Conheça o protótipo do Farol.">
+  <meta name="description" content="Explore o protótipo Farol: mapa de segurança, comparação de rotas, Guardião, alertas e apresentação do projeto. Aplicativo web para Android e iPhone.">
+  <meta property="og:title" content="FAROL — Seu caminho, mais tranquilo">
+  <meta property="og:description" content="Abra o protótipo Farol no navegador e adicione-o à tela inicial do celular.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rpnmind-blip.github.io/farol/">
   <meta property="og:image" content="https://rpnmind-blip.github.io/farol/assets/farol-capa.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>Farol · Protótipo interativo</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="manifest" href="manifest.webmanifest?v=2">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="journey.css">
-  <link rel="stylesheet" href="mobile.css">
+  <link rel="manifest" href="manifest.webmanifest?v=4">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="presentation.css">
   <link rel="stylesheet" href="install.css">
-  <script src="site.js" defer></script>
-  <script src="pwa.js?v=3" defer></script>
+  <script src="app.js" defer></script>
+  <script src="pwa.js?v=4" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 4v6c0 5-5 8-8 10-3-2-8-5-8-10V6z"/><path d="m8 12 3 3 5-6"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
-    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 5h10a4 4 0 0 1 0 8H7a3 3 0 0 0 0 6h10"/></symbol>
-    <symbol id="i-community" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M19 21v-3a5 5 0 0 0-3-4"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-  </defs></svg>
-  <header class="header" id="topo">
-    <div class="container header-inner">
-      <a href="#topo" class="brand" aria-label="Farol, início"><img src="assets/logo.svg" alt="" width="34" height="38"><span>FAROL</span></a>
-      <button class="menu-toggle" aria-label="Abrir menu" aria-controls="navigation" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
-      <nav id="navigation" aria-label="Navegação principal">
-        <a href="#jornada">A jornada</a><a href="#guardiao">Modo Guardião</a><a href="#comunidade">Comunidade</a>
-        <a href="#jornada" class="button small">Começar jornada <svg class="icon"><use href="#i-arrow"/></svg></a>
-      </nav>
-    </div>
-  </header>
-  <main id="conteudo">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow"><i></i> UM NOVO OLHAR PARA O SEU TRAJETO</span>
-          <h1 id="hero-title">Seu caminho,<br><span>mais tranquilo.</span></h1>
-          <p class="hero-description">Escolha seu caminho. Veja o entorno mudar. Sinta como seria ter companhia até chegar. A sua jornada com o Farol começa aqui.</p>
-          <div class="hero-actions"><a class="button" href="#jornada">Começar meu trajeto <svg class="icon"><use href="#i-arrow"/></svg></a><a class="quiet-link" href="demo/">Testar o app <span>→</span></a></div>
-          <p class="demo-note"><span></span> Protótipo disponível para explorar. Dados e funções simulados.</p>
-          <div class="hero-benefits"><span><svg class="icon"><use href="#i-shield"/></svg>Escolhas mais informadas</span><span><svg class="icon"><use href="#i-pin"/></svg>Mais tranquilidade no trajeto</span></div>
-        </div>
-        <div class="hero-art" aria-label="Telas do protótipo Farol em celulares ilustrativos">
-          <div class="orb orb-one"></div><div class="orb orb-two"></div>
-          <svg class="decorative-route" viewBox="0 0 600 600" fill="none" aria-hidden="true"><path d="M500 0C310 80 600 130 390 230S570 410 330 560" stroke="#8fb5f6" stroke-width="3" stroke-dasharray="10 13"/><path d="M84 411c-120-60-57-218 56-153" stroke="#9cd5bb" stroke-width="2" stroke-dasharray="5 8"/></svg>
-          <div class="phone phone-back"><div class="phone-camera"></div><img src="assets/tela-mapa.png" alt="Mapa do protótipo com uma rota recomendada e pontos de atenção" width="824" height="1700" fetchpriority="high"></div>
-          <div class="phone phone-front"><div class="phone-camera"></div><img src="assets/tela-inicio.png" alt="Início do Farol: mapa ilustrativo, score de segurança 82 e Modo Guardião" width="824" height="1700" fetchpriority="high"></div>
-          <div class="floating-chip chip-safe"><span class="chip-icon"><svg class="icon"><use href="#i-shield"/></svg></span><div><strong>Informação que orienta.</strong><small>Mais clareza para decidir.</small></div></div>
-          <div class="floating-chip chip-route"><i></i><span>Seu próximo caminho começa aqui.</span></div>
-        </div>
-      </div>
-      <svg class="skyline" viewBox="0 0 1440 130" preserveAspectRatio="none" aria-hidden="true"><path fill="#edf4fc" d="M0 130V100h42V69h25v31h31V54h31v40h41V71h22v29h30V42h30v58h25V63h45v37h20V27h28v73h43V53h35v47h25V69h25v31h27V25h38v75h40V56h27v44h39V16h31v84h36V73h45v27h38V57h30v43h24V80h46v20h34V36h35v64h47V61h25v39h25V15h34v85h42V56h37v44h26V72h42v28h54V51h28v49h54V70h40v60Z"/><path fill="none" stroke="#dbe7f4" stroke-width="3" d="M520 125 624 33l75 92M624 17v108m0-81-41 81m41-68-17 68m17-68 22 68m-22-81 51 81"/><path fill="#e7f2ed" d="M0 130v-16c16-25 29-21 42-5 17-22 34-27 52-3 14-21 37-27 55-2 25-17 42-12 54 9 17-12 37-12 47 6H0Zm1440 0V83c-20-28-42-18-52 5-25-16-44-5-53 19-22-14-43-9-55 16l-81 7Z"/><path fill="#f8fbff" d="M0 125c400 30 760-25 1040-17s310 27 400-2v24H0Z"/></svg>
-    </section>
-    <div class="journey-intro container" id="jornada"><div><span class="eyebrow">MAIS DO QUE LER. EXPERIMENTE.</span><p>Role para descobrir. <strong>O mapa acompanha.</strong></p></div><span class="scroll-invitation">Veja a cena mudar <span>↓</span></span></div>
-    <section class="scroll-journey" aria-label="Jornada interativa do Farol">
-      <noscript><style>.journey-layout{display:block}.stage-column,.mobile-scene{display:none}.story-chapter{min-height:0;padding:40px 0}.story-chapter .chapter-content{opacity:1}</style><p class="container">Ative o JavaScript para experimentar as escolhas. A proposta do Farol continua disponível para leitura abaixo.</p></noscript>
-      <div class="journey-layout container">
-        <div class="story-chapters">
-          <section class="story-chapter" id="proposta" data-chapter="0" aria-labelledby="context-title"><div class="chapter-content"><span class="chapter-index"><i>01</i> ENTENDA O ENTORNO</span><h2 id="context-title">O mesmo lugar.<br><em>Outro momento.</em></h2><p>O caminho muda com a hora do dia. Veja como o Farol poderia transformar contexto em informação para a sua decisão.</p><div class="choice-label">Que horas você vai sair?</div><div class="segmented period-controls" role="group" aria-label="Escolha o horário do cenário"><button data-period="day" class="selected" aria-pressed="true"><span aria-hidden="true">☀</span>Durante o dia</button><button data-period="night" aria-pressed="false"><span aria-hidden="true">☾</span>À noite</button></div><p class="choice-feedback" id="period-feedback" aria-live="polite">18:40 · Mais movimento e iluminação natural no cenário.</p><div class="chapter-hint"><span class="tiny-line"></span>Continue rolando. O caminho se revela.</div></div></section>
-          <section class="story-chapter" id="rotas" data-chapter="1" aria-labelledby="routes-title"><div class="chapter-content"><span class="chapter-index"><i>02</i> ESCOLHA SEU CAMINHO</span><h2 id="routes-title">Alguns minutos.<br><em>Outra perspectiva.</em></h2><p>Chegar rápido ou contornar os pontos de atenção? Compare as rotas e veja seu trajeto ganhar uma nova direção.</p><div class="route-options" role="group" aria-label="Compare as rotas de demonstração"><button class="route-option selected" data-route="safe" aria-pressed="true"><span class="option-name"><i></i>Recomendada <svg class="icon"><use href="#i-shield"/></svg></span><span class="route-numbers"><strong>21<small>min</small></strong><span>7,8 km</span><b data-option-score="safe">91<span>/100</span></b></span></button><button class="route-option" data-route="fast" aria-pressed="false"><span class="option-name"><i></i>Mais rápida</span><span class="route-numbers"><strong>18<small>min</small></strong><span>7,2 km</span><b data-option-score="fast">74<span>/100</span></b></span></button></div><p class="choice-feedback" id="route-insight" aria-live="polite">3 minutos a mais. Um caminho com menos pontos de atenção.</p><div class="chapter-hint"><span class="tiny-line"></span>Seu ponto no mapa acompanha a leitura.</div></div></section>
-          <section class="story-chapter" id="guardiao" data-chapter="2" aria-labelledby="guardian-title"><div class="chapter-content"><span class="chapter-index"><i>03</i> SIGA ACOMPANHADO</span><h2 id="guardian-title">Um caminho.<br><em>Uma companhia.</em></h2><p>Imagine ter um contato de confiança por perto. Ative o Guardião e acompanhe esse pequeno trajeto até o destino.</p><button class="button activate-guardian" data-action="guardian-start"><svg class="icon"><use href="#i-shield"/></svg><span>Ativar Guardião</span><svg class="icon"><use href="#i-arrow"/></svg></button><p class="choice-feedback" id="guardian-feedback" aria-live="polite">Uma simulação de 6 segundos, no seu ritmo.</p><div class="guardian-clarity"><span class="contact-avatar">M</span><div><strong>Mariana</strong><span>Contato de confiança fictício</span></div><svg class="icon"><use href="#i-shield"/></svg></div><p class="chapter-disclaimer">Nenhuma localização é rastreada ou mensagem enviada.</p></div></section>
-          <section class="story-chapter" id="comunidade" data-chapter="3" aria-labelledby="community-title"><div class="chapter-content"><span class="chapter-index"><i>04</i> AJUDE OUTROS CAMINHOS</span><h2 id="community-title">O que você vê<br><em>faz diferença.</em></h2><p>Uma informação pequena pode mudar uma decisão. Escolha um relato e veja como ele aparece no entorno.</p><div class="report-choices" role="group" aria-label="Escolha um relato para adicionar ao mapa"><button data-report="light" aria-pressed="false"><span aria-hidden="true">☀</span>Iluminação</button><button data-report="accident" aria-pressed="false"><svg class="icon"><use href="#i-route"/></svg>Acidente</button><button data-report="flood" aria-pressed="false"><span aria-hidden="true">≈</span>Alagamento</button></div><p class="choice-feedback" id="report-feedback" aria-live="polite">Toque em uma opção para adicionar seu relato fictício.</p><button class="remove-report" data-action="report-remove" disabled>Remover relato <span aria-hidden="true">×</span></button><div class="chapter-hint"><span class="tiny-line"></span>Uma cidade mais informada começa em conjunto.</div></div></section>
-        </div>
-        <aside class="stage-column" aria-label="Cenário que acompanha sua jornada"><div class="stage-sticky"><div class="desktop-scene"></div><p class="stage-caption"><span></span>Suas escolhas mudam o caminho. Continue explorando.</p></div></aside>
-      </div>
-    </section>
-    <div class="journey-finale container"><svg class="icon"><use href="#i-shield"/></svg><p>Você chegou até aqui.<br><strong>Imagine o Farol no seu próximo caminho.</strong></p><a href="#experimentar" class="inline-link">Continue explorando <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-    <template id="scene-template">
-      <div class="experience-stage" data-scene="0" data-period="day">
-        <div class="stage-top"><a href="#jornada" class="stage-brand"><img src="assets/logo.svg" width="21" height="24" alt="">FAROL<span>AO SEU REDOR</span></a><span class="stage-demo"><i></i>Demonstração</span></div>
-        <div class="stage-stepbar"><span class="scene-step-label">01 / ENTENDA O ENTORNO</span><nav class="scene-dots" aria-label="Etapas da jornada"><a href="#proposta" data-step="0" aria-label="Etapa 1: Entenda o entorno" aria-current="step"></a><a href="#rotas" data-step="1" aria-label="Etapa 2: Escolha sua rota"></a><a href="#guardiao" data-step="2" aria-label="Etapa 3: Modo Guardião"></a><a href="#comunidade" data-step="3" aria-label="Etapa 4: Relatos"></a></nav></div>
-        <div class="scene-map">
-          <svg viewBox="0 0 560 400" preserveAspectRatio="xMidYMid slice" class="journey-map" role="img" aria-label="Mapa ilustrativo de São Paulo com localização, rotas e pontos de atenção fictícios">
-            <defs><pattern id="blocks-UID" patternUnits="userSpaceOnUse" width="83" height="72" patternTransform="rotate(-29 280 200)"><rect x="9" y="9" width="63" height="52" rx="6" class="map-building"/></pattern><radialGradient id="light-UID"><stop offset="0" stop-color="#f9d98d" stop-opacity=".65"/><stop offset="1" stop-color="#f9d98d" stop-opacity="0"/></radialGradient></defs>
-            <rect width="560" height="400" class="map-surface"/><g class="map-roads"><rect x="-60" y="-70" width="680" height="540" fill="url(#blocks-UID)"/><path d="M-30 275 590 29M48 430 357-15M-20 105 567 399" class="map-avenue"/><path d="M-30 275 590 29M48 430 357-15M-20 105 567 399" class="map-centerline"/><path d="M-5 24 109 23 174 83 156 164 81 193-5 170Z" class="map-park"/><path d="M-10 58q84-22 103 17t35 49" class="map-water"/><path d="M-15 129Q64 88 99 154" stroke="#d9ecda" stroke-width="4" fill="none"/><text x="36" y="147" class="map-place park-label">PARQUE IBIRAPUERA</text><text x="302" y="57" class="map-place district-label">VILA MARIANA</text><text x="323" y="316" class="map-place street-label" transform="rotate(-31 323 316)">Rua Vergueiro</text></g>
-            <g class="attention-zones"><ellipse cx="329" cy="186" rx="54" ry="76" transform="rotate(28 329 186)"/><ellipse cx="227" cy="280" rx="34" ry="48" transform="rotate(28 227 280)"/></g>
-            <g class="night-lights"><circle cx="154" cy="262" r="45" fill="url(#light-UID)"/><circle cx="191" cy="178" r="49" fill="url(#light-UID)"/><circle cx="261" cy="105" r="48" fill="url(#light-UID)"/></g>
-            <g class="route-layer"><path class="map-path map-path-fast" d="M124 335 Q151 305 222 277 L310 176 Q350 116 445 67"/><path class="map-path map-path-safe is-selected" d="M124 335 Q93 280 149 248 L193 170 Q209 131 263 106 L445 67"/></g>
-            <g class="map-attention" transform="translate(327 188)"><circle r="18"/><path d="M0-6v8M0 7v1"/></g><g class="map-attention small-attention" transform="translate(230 281)"><circle r="14"/><path d="M-5-2h10v6H-5zM-3-5h6l2 3M-3 5v2M3 5v2"/></g>
-            <g class="destination-marker" transform="translate(445 67)"><circle r="14"/><path d="M-3-6v12M-3-6h8L2-2l3 3h-8"/></g>
-            <g class="traveler" transform="translate(124 335)"><circle class="traveler-halo" r="25"/><circle class="traveler-ring" r="14"/><circle class="traveler-core" r="8"/><path d="m-3 2 3-6 3 6z"/></g>
-            <g class="user-report-marker" role="img" aria-label="Seu relato fictício" transform="translate(315 239)"><circle class="report-halo" r="30"/><path d="M0 28C-8 16-19 6-19-5a19 19 0 0 1 38 0C19 6 8 16 0 28Z" class="report-pin"/><text class="report-glyph" x="0" y="2" text-anchor="middle">☀</text></g>
-          </svg>
-          <div class="scene-location"><svg class="icon"><use href="#i-pin"/></svg><span>Vila Mariana, São Paulo</span><b class="scene-time">18:40</b></div><span class="scene-north" aria-hidden="true">N<span>↑</span></span><div class="map-floating-note"><i></i><span class="scene-observation">Um olhar para o seu entorno.</span></div><div class="report-tooltip"><strong class="scene-report-title">Seu relato</strong><span>Adicionado à demonstração</span></div><span class="scene-map-note">Mapa ilustrativo · dados fictícios</span>
-        </div>
-        <div class="stage-bottom"><div class="scene-metrics"><div class="scene-score-ring"><span class="scene-score">82</span><small>/100</small></div><div class="scene-metric-copy"><span class="metric-eyebrow">SEU ENTORNO NO CENÁRIO</span><strong class="scene-headline">Um bom momento para ir.</strong><span class="scene-detail">Mais contexto para escolher melhor.</span></div><span class="scene-time-value">18:40</span></div><div class="scene-guardian"><div class="guardian-status-row"><span><i></i><b class="guardian-status-label">Pronto para acompanhar</b></span><strong class="guardian-percent">0%</strong></div><div class="guardian-progress" role="progressbar" aria-label="Progresso do percurso simulado" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="guardian-fill"></span></div><div class="guardian-endpoints"><span>Faculdade</span><span>Casa</span></div></div></div>
-      </div>
-    </template>
-    <section class="section faq-section" aria-labelledby="faq-title"><div class="container faq-grid"><div class="reveal"><span class="eyebrow">ANTES DE EXPERIMENTAR</span><h2 id="faq-title">O Farol,<br><em>com clareza.</em></h2><p>Uma ideia em desenvolvimento.<br>Uma experiência que você já pode conhecer.</p></div><div class="faq-list reveal">
-      <details><summary>O Farol já é um aplicativo em operação?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Esta versão é um protótipo visual e navegável para apresentar a proposta. Rotas, scores, alertas e localização são simulados. Ela não informa o risco real de uma região.</p></details>
-      <details><summary>Posso testar no Android e no iPhone?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Sim. Abra o aplicativo web no navegador dos dois sistemas. Para ter um ícone na tela inicial, use “Instalar como app” e siga as instruções do seu celular. Não é necessário baixar um arquivo.</p></details>
-      <details><summary>O SOS envia mensagens ou chama uma emergência?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Na demonstração, não. O botão mostra o fluxo visual após ser pressionado por três segundos. Nenhuma mensagem é enviada e nenhum serviço de emergência é acionado. O Guardião também não acompanha sua localização real.</p></details>
-      <details><summary>Há integração com câmeras e sensores?<svg class="icon"><use href="#i-plus"/></svg></summary><p>Câmeras, sensores urbanos e alertas em tempo real fazem parte da evolução prevista. Eles não estão conectados à versão demonstrativa disponível nesta página.</p></details>
-      <details><summary>Preciso criar uma conta para explorar?<svg class="icon"><use href="#i-plus"/></svg></summary><p>O protótipo não exige cadastro e não pede acesso ao GPS ou aos contatos. Relatos e preferências da demonstração ficam apenas no navegador ou no aparelho, e podem ser apagados em Perfil → Reiniciar apresentação.</p></details>
-    </div></div></section>
-    <section class="download-section" id="experimentar" aria-labelledby="download-title"><div class="container download-inner reveal"><span class="eyebrow">SEU PRÓXIMO PASSO</span><h2 id="download-title">O Farol no seu celular,<br><span>sem baixar arquivos.</span></h2><p>Adicione este app web à tela inicial do Android ou do iPhone.</p><div class="download-actions"><button type="button" data-install-app class="button">Instalar o Farol <svg class="icon"><use href="#i-plus"/></svg></button><a href="demo/" class="button secondary">Testar antes de instalar <svg class="icon"><use href="#i-arrow"/></svg></a></div><p class="download-info">Um PWA para os dois sistemas · protótipo com dados simulados</p><div class="install-help"><strong>Como funciona?</strong><p>Toque em “Instalar o Farol”. No Android, o Chrome pode abrir a confirmação de instalação. No iPhone, você verá o passo a passo para adicionar esta página à Tela de Início pelo Safari. Depois da primeira visita online, o app web também pode abrir offline.</p></div></div></section>
-  </main>
-  <footer class="footer"><div class="container footer-inner"><a href="#topo" class="brand"><img src="assets/logo.svg" width="29" height="32" alt=""><span>FAROL</span></a><p>Informação que orienta. Tranquilidade que acompanha.</p><a href="#experimentar">Conheça o protótipo <span>↑</span></a></div><div class="container footer-bottom"><span>Projeto Farol · 2026</span><span>Deslocamentos mais seguros começam com informação.</span></div></footer>
+  <div id="app"></div>
+  <noscript><main style="max-width:640px;margin:40px auto;padding:24px;font-family:Arial,sans-serif;line-height:1.6"><h1>Farol</h1><p>Protótipo de mapa, rotas, Guardião e relatos para Android e iPhone. Ative o JavaScript para explorar as telas. Todos os dados desta versão são simulados.</p></main></noscript>
+  <div id="modal-root"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

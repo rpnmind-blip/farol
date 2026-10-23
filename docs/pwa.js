@@ -5,7 +5,6 @@ if('serviceWorker' in navigator && (location.protocol==='https:' || /^(localhost
 }
 
 let installPrompt=null;
-const installButtons=Array.from(document.querySelectorAll('[data-install-app]'));
 const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const isAndroid=/Android/.test(navigator.userAgent);
 const installed=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
@@ -25,7 +24,7 @@ function showGuide(){
   const title=guide.querySelector('#install-title'),description=guide.querySelector('#install-description'),steps=guide.querySelector('#install-steps');
   if(isIOS){
     title.textContent='Adicione o Farol no iPhone';
-    description.textContent='No Safari, você pode adicionar o Farol à Tela de Início sem sair desta página.';
+    description.textContent='No Safari, você pode adicionar este protótipo à Tela de Início.';
     steps.replaceChildren(...['Abra esta página no Safari. Se estiver em outro aplicativo, use a opção para abrir no navegador.','Toque em Compartilhar e escolha “Adicionar à Tela de Início”.','Se aparecer, ative “Abrir como App” e toque em Adicionar.'].map(step=>{const li=document.createElement('li');li.textContent=step;return li;}));
   }else if(isAndroid){
     title.textContent='Instale o Farol no Android';
@@ -40,13 +39,14 @@ function showGuide(){
 }
 
 function updateInstalled(){
-  if(!installed())return;
-  installButtons.forEach(button=>{button.hidden=true;});
+  document.documentElement.classList.toggle('pwa-installed',installed());
 }
 window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;});
 window.addEventListener('appinstalled',()=>{installPrompt=null;updateInstalled();});
 matchMedia('(display-mode: standalone)').addEventListener?.('change',updateInstalled);
-installButtons.forEach(button=>button.addEventListener('click',async()=>{
+document.addEventListener('click',async event=>{
+  const button=event.target.closest('[data-install-app]');
+  if(!button)return;
   if(installPrompt){
     const prompt=installPrompt;installPrompt=null;
     await prompt.prompt();
@@ -55,5 +55,5 @@ installButtons.forEach(button=>button.addEventListener('click',async()=>{
     return;
   }
   showGuide();
-}));
+});
 updateInstalled();

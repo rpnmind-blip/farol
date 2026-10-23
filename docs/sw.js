@@ -1,10 +1,9 @@
 'use strict';
-const CACHE='farol-web-v3';
+const CACHE='farol-web-v4';
 const FILES=[
-  './','index.html','style.css','journey.css','mobile.css','install.css','site.js','pwa.js','manifest.webmanifest',
+  './','index.html','app.css','presentation.css','app.js','install.css','pwa.js','manifest.webmanifest',
   'assets/logo.svg','assets/icon-192.png','assets/icon-512.png','assets/apple-touch-icon.png',
-  'assets/tela-inicio.png','assets/tela-mapa.png','assets/farol-capa.png',
-  'demo/','demo/index.html','demo/app.html','demo/style.css','demo/app.js'
+  'assets/farol-capa.png','demo/','demo/index.html'
 ];
 const root=new URL('./',self.location.href);
 self.addEventListener('install',event=>{
